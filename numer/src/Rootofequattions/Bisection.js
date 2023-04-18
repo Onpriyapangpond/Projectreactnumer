@@ -20,7 +20,7 @@ function Bisection() {
    const [adminname,setAdminname]=useState('')
 
 
-  const hangover =() =>{
+const hangover =() =>{
     axios.get("http://localhost:3005/bisection",{headers: { authorization: `b ${token}`}}).then((answer)=>{ 
       console.log(answer);
       let rannum = parseInt(Math.floor(Math.random()*answer.data.length))%answer.data.length
@@ -30,7 +30,9 @@ function Bisection() {
       setxl(answer.data[rannum].Xl)
       setxr(answer.data[rannum].Xr)
     })
- }
+}
+
+
 
  
 const getToken =()=>{

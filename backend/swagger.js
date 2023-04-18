@@ -1,7 +1,7 @@
 const swaggerAutogen = require("swagger-autogen");
 
 const outputfile = "./swagger.json";
-const read = ["./jj.js"];
+const read = ["./jj.js"];  //gen
 
 const secureityDifinations = {
   basic: {

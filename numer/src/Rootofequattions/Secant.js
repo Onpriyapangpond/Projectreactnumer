@@ -2,6 +2,7 @@ import React,{ useState } from 'react'
 import ApexCharts from 'apexcharts'
 import { Button, Container, Table } from "react-bootstrap";
 import { evaluate } from 'mathjs'
+import {Seca} from "./calsecant"
 
 function Secant() {
   
@@ -11,11 +12,11 @@ function Secant() {
   const [x1, setx1] = useState('3')
   const [html, setHtml] = useState()
   const [ans, setans] = useState(0)
-  const anser = [] //Arary eror
-  const ansx1 = [] //Array x1
-  const ansx =[] //Array xold
-  const round = []
-  const data =[]
+  let anser = [] //Arary eror
+  let ansx1 = [] //Array x1
+  let ansx =[] //Array xold
+  let round = []
+  let data =[]
 
   const print = () =>{
     return(
@@ -50,7 +51,15 @@ function Secant() {
 
     let xx0 = parseFloat(x0);
     let xx1 = parseFloat(x1);
-    Seca(func,xx0,xx1)
+
+    const { x1new,datanew,roundnew,ansernew,ansx1new,ansxnew} =Seca (func,xx0,xx1)
+     anser = ansernew //Arary eror
+     ansx1 =  ansx1new //Array x1
+     ansx = ansxnew //Array xold
+     round = roundnew
+     data =datanew
+    setans(x1new)
+
     
     //MATH Graph
     var options = {
@@ -100,47 +109,47 @@ function Secant() {
     chart.render()
   }
   
-  function Seca(Func,X0,X1){
-    let Er = 100.0
-    let Err = 0.00001
-    let xnew = 0
-    let i=0
-    let obj ={}
+  // function Seca(Func,X0,X1){
+  //   let Er = 100.0
+  //   let Err = 0.00001
+  //   let xnew = 0
+  //   let i=0
+  //   let obj ={}
 
     
-    do{
-     ansx.push(X0.toFixed(7))
-    let scope = {x:X0}
-    let fxx0 = evaluate(Func,scope)
+  //   do{
+  //    ansx.push(X0.toFixed(7))
+  //   let scope = {x:X0}
+  //   let fxx0 = evaluate(Func,scope)
       
-    let scope1 = {x:X1}
-    let fxx1 = evaluate(Func,scope1)
+  //   let scope1 = {x:X1}
+  //   let fxx1 = evaluate(Func,scope1)
       
 
-      xnew = X0-((fxx0*(X0-X1))/(fxx0-fxx1))
-      Er = Math.abs((xnew-X1)/xnew)*100.0
-      X0=X1
-      X1=xnew
-      ansx1.push(X1)
-      anser.push(Er)
+  //     xnew = X0-((fxx0*(X0-X1))/(fxx0-fxx1))
+  //     Er = Math.abs((xnew-X1)/xnew)*100.0
+  //     X0=X1
+  //     X1=xnew
+  //     ansx1.push(X1)
+  //     anser.push(Er)
 
-      obj = {
-        iteration:i,
-        Xold:X0,
-        X1:xnew,
-        Er:Er,
+  //     obj = {
+  //       iteration:i,
+  //       Xold:X0,
+  //       X1:xnew,
+  //       Er:Er,
         
-      }
-      i++
-      round.push(i)
-      data.push(obj);
+  //     }
+  //     i++
+  //     round.push(i)
+  //     data.push(obj);
       
-    }while(Er>Err)
+  //   }while(Er>Err)
 
-    console.log("error",anser)
-    console.log(typeof(ans))
-    setans(X1)
-  }
+  //   console.log("error",anser)
+  //   console.log(typeof(ans))
+  //   setans(X1)
+  // }
   
   return (
     <div className='secant'>

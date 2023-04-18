@@ -61,7 +61,7 @@ function OnePointIteration() {
   const submit = () => {
 
     let X = parseFloat(x1);
-    const {ansernew,datanew,ansxnew,ansnew}=Onepoint(func,X)
+    const {ansernew,datanew,ansxnew,ansnew} = Onepoint(func,X)
     anser=ansernew
     data=datanew
     ansx=ansxnew
@@ -70,6 +70,7 @@ function OnePointIteration() {
     console.log(data);
     console.log(ansx);
     console.log(ans);
+    
 //Onepoint(func,X)
 
     //MATH Graph

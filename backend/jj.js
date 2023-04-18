@@ -93,13 +93,13 @@ app.post("/j", (req, res) => {
 
   app.get("/gettoken", async (req, res) => { 
     console.log("eoe");
-    var token = jwt.sign({ foo: 'bar' }, 'shhhhh');
+    var token = jwt.sign({ foo: 'bar' }, 'shhhhh'); //fooคือ key แปลงเป็น token 
     res.send(token) //ส่งกลับไป
 });
 
 function authorization(req, res, next) {
     console.log(req.headers);
-    let token = req.headers["authorization"];
+    let token = req.headers["authorization"]; //ดูว่ามีข้อมูลในนี้มั้ย
     if (token === undefined) {
       res.send("don't have authorization");
     } else {
@@ -107,7 +107,7 @@ function authorization(req, res, next) {
         
         token = token.split(" ")[1];
         console.log(token);
-        let decode = jwt.verify(token, 'shhhhh');
+        let decode = jwt.verify(token, 'shhhhh'); //sh กุญแจ แปลงกลับค่าเดิม
         console.log(decode);
         if (decode.foo === "bar") {
           next();
