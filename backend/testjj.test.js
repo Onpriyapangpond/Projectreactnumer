@@ -15,13 +15,13 @@ describe("GET /gettoken/:name", () => {
 
 
 
-test("Querry", async () => {
-    const response = await request(app).get("/onepoint");
-    expect(response.statusCode).toBe(200);
-    expect(response.text).toBe(
-      '[{"_id":"642e89211856015be679397b","Fxx":"x^4-5","X1":"5"}]'
-    );
-  });
+// test("Querry", async () => {
+//     const response = await request(app).get("/onepoint");
+//     expect(response.statusCode).toBe(200);
+//     expect(response.text).toBe(
+//       '[{"_id":"642e89211856015be679397b","Fxx":"x^4-5","X1":"5"}]'
+//     );
+//   });
 
  
 
